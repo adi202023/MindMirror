@@ -129,7 +129,4 @@ All backend APIs are served by default from `http://localhost:3001`.
 
 ---
 
-## 👥 Team
 
-**Team NovaRise** — Bharat Academix CodeQuest  
-Lead Developer: Aditya S Sheregar
