@@ -199,7 +199,7 @@ export default function WaveformRecorder({ onComplete, state, onStateChange }) {
     const browserLangs = navigator.languages || [navigator.language];
     for (const lang of browserLangs) {
       const short = lang.split('-')[0].toLowerCase();
-      if (short !== 'en' && supportedLocales[short]) {
+      if (supportedLocales[short]) {
         return supportedLocales[short];
       }
     }

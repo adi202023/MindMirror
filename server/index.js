@@ -1216,8 +1216,12 @@ app.post('/api/analyze', async (req, res) => {
     const esMatch = words.filter(w => esWords.includes(w)).length;
     const frMatch = words.filter(w => frWords.includes(w)).length;
 
+    // Common English words list to prevent false positive matches
+    const enWords = ['the', 'be', 'to', 'of', 'and', 'a', 'in', 'that', 'have', 'i', 'it', 'for', 'not', 'on', 'with', 'he', 'as', 'you', 'do', 'at', 'this', 'but', 'his', 'by', 'from', 'they', 'we', 'say', 'her', 'she', 'or', 'an', 'will', 'my', 'one', 'all', 'would', 'there', 'their', 'what', 'so', 'up', 'out', 'if', 'about', 'who', 'get', 'which', 'go', 'me'];
+    const enMatch = words.filter(w => enWords.includes(w)).length;
+
     const max = Math.max(hiMatch, taMatch, teMatch, esMatch, frMatch);
-    if (max >= 2) {
+    if (max >= 2 && enMatch < max) {
       if (hiMatch === max) detectedLang = 'hi';
       else if (taMatch === max) detectedLang = 'ta';
       else if (teMatch === max) detectedLang = 'te';
